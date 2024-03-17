@@ -1,12 +1,18 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_TECH = gql`
-  query tech {
-    tech {
-      _id
-      name
+export const QUERY_BOOKS = gql`
+query Query($email: String) {
+  user(email: $email) {
+    savedBooks {
+      bookId
+      authors
+      description
+      image
+      link
+      title
     }
   }
+}
 `;
 
 export const QUERY_MATCHUPS = gql`
@@ -19,4 +25,24 @@ export const QUERY_MATCHUPS = gql`
       tech2_votes
     }
   }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      password
+      savedBooks {
+        bookId
+        authors
+        description
+        image
+        link
+        title
+      }
+    }
+  }
+  
 `;
